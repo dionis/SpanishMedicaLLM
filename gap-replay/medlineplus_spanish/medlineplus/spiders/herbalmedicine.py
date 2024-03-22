@@ -1,6 +1,6 @@
 import scrapy
 
-class HealthMedicineSpider(scrapy.Spider):
+class HerbalMedicineSpider(scrapy.Spider):
     name = 'herbalmedicine'
     allowed_domains = ['medlineplus.gov']
     start_urls = [

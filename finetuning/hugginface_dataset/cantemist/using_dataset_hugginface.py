@@ -35,7 +35,6 @@ DATASET_TO_UPDATE = 'somosnlp/spanish_medica_llm'
 login(token = HF_TOKEN)
 
 dataset_CODING = load_dataset(DATASET_TO_LOAD)
-dataset_CODING
 royalListOfCode = {}
 issues_path = 'dataset'
 tokenizer = AutoTokenizer.from_pretrained("DeepESP/gpt2-spanish-medium")
@@ -163,7 +162,7 @@ try:
 except Exception:
   spanish_dataset = local_spanish_dataset
 
-#spanish_dataset.push_to_hub(DATASET_TO_UPDATE)
+spanish_dataset.push_to_hub(DATASET_TO_UPDATE)
 
 print(spanish_dataset)
 
@@ -172,5 +171,5 @@ print(spanish_dataset)
 #Importan if exist element on DATASET_TO_UPDATE we must to update element 
 # in list, and review if the are repeted elements
 
-#spanish_dataset.push_to_hub(DATASET_TO_UPDATE)
+
 

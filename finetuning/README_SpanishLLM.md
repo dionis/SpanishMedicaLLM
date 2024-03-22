@@ -40,3 +40,11 @@ https://huggingface.co/mrm8488/mbart-large-finetuned-opus-en-es-translation
 - [The Shift from Models to Compound AI Systems](https://bair.berkeley.edu/blog/2024/02/18/compound-ai-systems/)
 
 
+## Use Blended Technique 
+
+**Arcee's MergeKit: A Toolkit for Merging Large Language Models**
+- https://www.linkedin.com/posts/philipp-schmid-a6a2bb196_free-llm-improvements-model-merging-allows-activity-7176852931298631682-xDur?utm_source=share&utm_medium=member_desktop
+
+- https://www.linkedin.com/posts/philipp-schmid-a6a2bb196_free-llm-improvements-model-merging-allows-activity-7176852931298631682-xDur?utm_source=share&utm_medium=member_desktop
+
+

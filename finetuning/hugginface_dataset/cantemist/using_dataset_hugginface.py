@@ -19,8 +19,7 @@ import os
 import time
 import math
 from huggingface_hub import login
-from datasets import load_dataset
-from datasets import load_dataset
+from datasets import load_dataset, concatenate_datasets
 from functools import reduce
 from pathlib import Path
 import pandas as pd
@@ -36,7 +35,6 @@ DATASET_TO_UPDATE = 'somosnlp/spanish_medica_llm'
 login(token = HF_TOKEN)
 
 dataset_CODING = load_dataset(DATASET_TO_LOAD)
-dataset_CODING
 royalListOfCode = {}
 issues_path = 'dataset'
 tokenizer = AutoTokenizer.from_pretrained("DeepESP/gpt2-spanish-medium")
@@ -136,6 +134,10 @@ for iDataset in dataset_CODING:
           corpusToLoad.append(newCorpusRow)
         
 df = pd.DataFrame.from_records(corpusToLoad)
+
+if os.path.exists(f"{str(path)}/{issues_path}/spanish_medical_llms.jsonl"):
+  os.remove(f"{str(path)}/{issues_path}/spanish_medical_llms.jsonl")
+
 df.to_json(f"{str(path)}/{issues_path}/spanish_medical_llms.jsonl", orient="records", lines=True)
 print(
         f"Downloaded all the issues for {DATASET_TO_LOAD}! Dataset stored at {issues_path}/spanish_medical_llms.jsonl"
@@ -151,7 +153,16 @@ print ('File size on Megabytes  (MB)', size >> 20 ) # 5120 megabytes (MB)
 print ('File size on Gigabytes (GB)', size >> 30 ) # 5 gigabytes (GB)
 
 #Once the issues are downloaded we can load them locally using our 
-spanish_dataset = load_dataset("json", data_files=f"{str(path)}/{issues_path}/spanish_medical_llms.jsonl", split="train")
+local_spanish_dataset = load_dataset("json", data_files=f"{str(path)}/{issues_path}/spanish_medical_llms.jsonl", split="train")
+
+##Update local dataset with cloud dataset
+try:  
+  spanish_dataset = load_dataset(DATASET_TO_UPDATE)
+  spanish_dataset = concatenate_datasets([spanish_dataset, local_spanish_dataset])
+except Exception:
+  spanish_dataset = local_spanish_dataset
+
+spanish_dataset.push_to_hub(DATASET_TO_UPDATE)
 
 print(spanish_dataset)
 
@@ -160,5 +171,5 @@ print(spanish_dataset)
 #Importan if exist element on DATASET_TO_UPDATE we must to update element 
 # in list, and review if the are repeted elements
 
-#spanish_dataset.push_to_hub(DATASET_TO_UPDATE)
+
 

@@ -1,7 +1,7 @@
 import scrapy
 
 class HerbalMedicineSpider(scrapy.Spider):
-    name = 'herbalmedicine'
+    name = 'herbalmedicinespider'
     allowed_domains = ['medlineplus.gov']
     start_urls = [
          'https://medlineplus.gov/spanish/complementaryandintegrativemedicine.html',

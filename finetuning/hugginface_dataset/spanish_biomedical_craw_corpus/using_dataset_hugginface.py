@@ -19,8 +19,7 @@ import os
 import time
 import math
 from huggingface_hub import login
-from datasets import load_dataset
-from datasets import load_dataset
+from datasets import load_dataset, concatenate_datasets
 from functools import reduce
 from pathlib import Path
 import pandas as pd
@@ -80,7 +79,7 @@ corpusToLoad = []
 countCopySeveralDocument = 0
 counteOriginalDocument = 0
 
-FILE_TO_PROCESS = DATASET_TO_LOAD
+FILE_TO_PROCESS = EXAMPLE_DATASET_TO_LOAD
 
 if not os.path.exists(str(path) + os.sep + FILE_TO_PROCESS):
    FILE_TO_PROCESS = EXAMPLE_DATASET_TO_LOAD
@@ -90,12 +89,15 @@ with open( str(path) + os.sep + FILE_TO_PROCESS,encoding='utf8') as file:
   paragraph = ''
 
   for index, iLine in enumerate(linesInFile): 
-    text =linesInFile[index] if len(linesInFile[index]) > 1 else '' 
-    paragraph += text + '\n'
+    text = linesInFile[index] if len(linesInFile[index]) > 1 else '' 
+    paragraph += text + ' '
 
     if text == '':
+        print('<--- Paragraph ---->')
+        print (paragraph)
+        print ('<---------------------------------->')
         counteOriginalDocument += 1  
-        idFile = counteOriginalDocument
+        idFile = str(counteOriginalDocument)
         newCorpusRow = cantemistDstDict.copy()
         listOfTokens = tokenizer.tokenize(paragraph)
         currentSizeOfTokens = len(listOfTokens)
@@ -107,6 +109,11 @@ with open( str(path) + os.sep + FILE_TO_PROCESS,encoding='utf8') as file:
         paragraph = ''
         
 df = pd.DataFrame.from_records(corpusToLoad)
+
+if os.path.exists(f"{str(path)}/{issues_path}/spanish_medical_llms.jsonl"):
+  os.remove(f"{str(path)}/{issues_path}/spanish_medical_llms.jsonl")
+
+
 df.to_json(f"{str(path)}/{issues_path}/spanish_medical_llms.jsonl", orient="records", lines=True)
 print(
         f"Downloaded all the issues for {DATASET_TO_LOAD}! Dataset stored at {issues_path}/spanish_medical_llms.jsonl"
@@ -122,9 +129,18 @@ print ('File size on Megabytes  (MB)', size >> 20 ) # 5120 megabytes (MB)
 print ('File size on Gigabytes (GB)', size >> 30 ) # 5 gigabytes (GB)
 
 #Once the issues are downloaded we can load them locally using our 
-spanish_dataset = load_dataset("json", data_files=f"{str(path)}/{issues_path}/spanish_medical_llms.jsonl", split="train")
+local_spanish_dataset = load_dataset("json", data_files=f"{str(path)}/{issues_path}/spanish_medical_llms.jsonl", split="train")
 
-print(spanish_dataset)
+# try:  
+#   spanish_dataset = load_dataset(DATASET_TO_UPDATE,  split="train")
+#   spanish_dataset = concatenate_datasets([spanish_dataset, local_spanish_dataset])
+# except Exception:
+#   print ('<=== Error ===>')
+#   spanish_dataset = local_spanish_dataset
+
+# spanish_dataset.push_to_hub(DATASET_TO_UPDATE)
+
+print(local_spanish_dataset)
 
 # Augmenting the dataset
 

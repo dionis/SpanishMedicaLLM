@@ -17,7 +17,7 @@ with open( str(path) + os.sep + 'example.txt',encoding='utf8') as file:
   linesInFile = file.readlines()
  
   for index, iLine in enumerate(linesInFile): 
-    print(linesInFile[index]) if len(linesInFile[index]) > 1 else  print('**************') if linesInFile[index] == '\n' else print ('******* ERROR ********')
+    print([linesInFile[index]]) if len(linesInFile[index]) > 1 else  print('**************') if linesInFile[index] == '\n' else print ('******* ERROR ********')
  
 
     # if re.match('^Las dilataciones bronquiales',iLine):

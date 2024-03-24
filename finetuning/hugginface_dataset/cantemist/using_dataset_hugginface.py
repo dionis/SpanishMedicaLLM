@@ -30,6 +30,7 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 HF_TOKEN = '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'
 DATASET_TO_LOAD = 'bigbio/cantemist'
 DATASET_TO_UPDATE = 'somosnlp/spanish_medica_llm'
+DATASET_SOURCE_ID = '1'
 
 #Loggin to Huggin Face
 login(token = HF_TOKEN)
@@ -89,7 +90,7 @@ cantemistDstDict = {
   'speciallity': '',
   'raw_text_type': 'clinic_case',
   'topic_type': 'medical_diagnostic',
-  'source': '1',
+  'source': DATASET_SOURCE_ID,
   'country': 'es',
   'document_id': ''
 }
@@ -129,7 +130,7 @@ for iDataset in dataset_CODING:
           #print('Current text has ', currentSizeOfTokens)
           #print('Total of tokens is ', totalOfTokens)
           newCorpusRow['raw_text'] = text
-          newCorpusRow['document_id'] = idFile
+          newCorpusRow['document_id'] = str(idFile)
           newCorpusRow['topic'] = iTypes
           corpusToLoad.append(newCorpusRow)
         
@@ -157,7 +158,7 @@ local_spanish_dataset = load_dataset("json", data_files=f"{str(path)}/{issues_pa
 
 ##Update local dataset with cloud dataset
 try:  
-  spanish_dataset = load_dataset(DATASET_TO_UPDATE)
+  spanish_dataset = load_dataset(DATASET_TO_UPDATE, split="train")
   spanish_dataset = concatenate_datasets([spanish_dataset, local_spanish_dataset])
 except Exception:
   spanish_dataset = local_spanish_dataset

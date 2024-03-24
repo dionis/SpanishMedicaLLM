@@ -19,8 +19,7 @@ import os
 import time
 import math
 from huggingface_hub import login
-from datasets import load_dataset
-from datasets import load_dataset
+from datasets import load_dataset, concatenate_datasets
 from functools import reduce
 from pathlib import Path
 import pandas as pd
@@ -120,7 +119,7 @@ for iDataset in dataset_CODING:
     if iDataset == 'train':
       for item in dataset_CODING[iDataset]:
         #print ("Element in dataset")
-        idFile = item['id']
+        idFile = str(item['id'])
         text = '' if len(item['tokens']) == 0 else reduce(lambda a, b: a + " "+ b, item['tokens'], "")
 
         #Find topic or diagnosti clasification about the text
@@ -140,6 +139,11 @@ for iDataset in dataset_CODING:
         corpusToLoad.append(newCorpusRow)
         
 df = pd.DataFrame.from_records(corpusToLoad)
+
+if os.path.exists(f"{str(path)}/{issues_path}/spanish_medical_llms.jsonl"):
+  os.remove(f"{str(path)}/{issues_path}/spanish_medical_llms.jsonl")
+
+
 df.to_json(f"{str(path)}/{issues_path}/spanish_medical_llms.jsonl", orient="records", lines=True)
 print(
         f"Downloaded all the issues for {DATASET_TO_LOAD}! Dataset stored at {issues_path}/spanish_medical_llms.jsonl"
@@ -154,8 +158,19 @@ print ('File size on Kilobytes (kB)', size >> 10)  # 5242880 kilobytes (kB)
 print ('File size on Megabytes  (MB)', size >> 20 ) # 5120 megabytes (MB)
 print ('File size on Gigabytes (GB)', size >> 30 ) # 5 gigabytes (GB)
 
-#Once the issues are downloaded we can load them locally using our 
-spanish_dataset = load_dataset("json", data_files=f"{str(path)}/{issues_path}/spanish_medical_llms.jsonl", split="train")
+##Update local dataset with cloud dataset
+local_spanish_dataset = load_dataset("json", data_files=f"{str(path)}/{issues_path}/spanish_medical_llms.jsonl", split="train")
+
+print (' Local Dataset ==> ')
+print(local_spanish_dataset)
+
+try:  
+  spanish_dataset = load_dataset(DATASET_TO_UPDATE, split="train")
+  spanish_dataset = concatenate_datasets([spanish_dataset, local_spanish_dataset])
+except Exception:
+  spanish_dataset = local_spanish_dataset
+
+spanish_dataset.push_to_hub(DATASET_TO_UPDATE)
 
 print(spanish_dataset)
 

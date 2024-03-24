@@ -15,3 +15,10 @@
     Los codigos de la Base de Datos fueron tomados de 
 
       https://eciemaps.mscbs.gob.es/ecieMaps/documentation/documentation.html
+
+
+## Size of add new rows 
+
+ - On dataset there are as document  966
+ - On dataset there are as copy document  389    
+ - On dataset there are as size of Tokens  322353

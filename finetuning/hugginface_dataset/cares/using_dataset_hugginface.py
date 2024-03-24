@@ -19,8 +19,7 @@ import os
 import time
 import math
 from huggingface_hub import login
-from datasets import load_dataset
-from datasets import load_dataset
+from datasets import load_dataset, concatenate_datasets
 from functools import reduce
 from pathlib import Path
 import pandas as pd
@@ -40,6 +39,8 @@ dataset_CODING = load_dataset(DATASET_TO_LOAD)
 dataset_CODING
 royalListOfCode = {}
 issues_path = 'dataset'
+DATASET_SOURCE_ID = '5'
+
 tokenizer = AutoTokenizer.from_pretrained("DeepESP/gpt2-spanish-medium")
 
 #Read current path
@@ -106,7 +107,7 @@ cantemistDstDict = {
   'speciallity': '',
   'raw_text_type': 'clinic_case',
   'topic_type': 'medical_diagnostic',
-  'source': '5',
+  'source': DATASET_SOURCE_ID,
   'country': 'es',
   'document_id': ''
 }
@@ -120,7 +121,7 @@ for iDataset in dataset_CODING:
     if iDataset == 'test':
       for item in dataset_CODING[iDataset]:
         #print ("Element in dataset")
-        idFile = item['iddoc']
+        idFile = str(item['iddoc'])
         text = item['full_text']
         labels_of_type = item['icd10']
 
@@ -150,6 +151,11 @@ for iDataset in dataset_CODING:
           corpusToLoad.append(newCorpusRow)
         
 df = pd.DataFrame.from_records(corpusToLoad)
+
+if os.path.exists(f"{str(path)}/{issues_path}/spanish_medical_llms.jsonl"):
+  os.remove(f"{str(path)}/{issues_path}/spanish_medical_llms.jsonl")
+
+
 df.to_json(f"{str(path)}/{issues_path}/spanish_medical_llms.jsonl", orient="records", lines=True)
 print(
         f"Downloaded all the issues for {DATASET_TO_LOAD}! Dataset stored at {issues_path}/spanish_medical_llms.jsonl"
@@ -165,14 +171,18 @@ print ('File size on Megabytes  (MB)', size >> 20 ) # 5120 megabytes (MB)
 print ('File size on Gigabytes (GB)', size >> 30 ) # 5 gigabytes (GB)
 
 #Once the issues are downloaded we can load them locally using our 
-spanish_dataset = load_dataset("json", data_files=f"{str(path)}/{issues_path}/spanish_medical_llms.jsonl", split="train")
+##Update local dataset with cloud dataset
+
+local_spanish_dataset = load_dataset("json", data_files=f"{str(path)}/{issues_path}/spanish_medical_llms.jsonl", split="train")
+
+print (' Local Dataset ==> ')
+print(local_spanish_dataset)
+try:  
+  spanish_dataset = load_dataset(DATASET_TO_UPDATE,  split="train")
+  spanish_dataset = concatenate_datasets([spanish_dataset, local_spanish_dataset])
+except Exception:
+   spanish_dataset = local_spanish_dataset
+
+spanish_dataset.push_to_hub(DATASET_TO_UPDATE)
 
 print(spanish_dataset)
-
-# Augmenting the dataset
-
-#Importan if exist element on DATASET_TO_UPDATE we must to update element 
-# in list, and review if the are repeted elements
-
-#spanish_dataset.push_to_hub(DATASET_TO_UPDATE)
-

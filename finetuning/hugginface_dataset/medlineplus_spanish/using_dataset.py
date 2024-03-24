@@ -19,8 +19,7 @@ import os
 import time
 import math
 from huggingface_hub import login
-from datasets import load_dataset
-from datasets import load_dataset
+from datasets import load_dataset, concatenate_datasets
 from functools import reduce
 from pathlib import Path
 import pandas as pd
@@ -28,12 +27,21 @@ import numpy as np
 
 
 # Load model directly
-from transformers import AutoTokenizer, AutoModelForCausalLM
+from transformers import AutoTokenizer
 
 HF_TOKEN = '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'
-DATASET_TO_LOAD = 'output_exp.json'
+DATASET_TO_LOAD = 'spanish_health_output.json'
 DATASET_TO_UPDATE = 'somosnlp/spanish_medica_llm'
-
+BAD_CHAIN = [
+   'es como usted puede verificarlo',
+   'Un sitio oficial del Gobierno de Estados Unidos',
+   'lo en sitios web oficiales y seguros.',
+   'forma segura a un sitio web .gov. Comparta informaci', 
+   'Gobierno de Estados Unidos.',
+   'pertenece a una organizaci',
+   '(\r\n              \n ) o ',
+   'Un sitio\r\n'
+]
 #Loggin to Huggin Face
 login(token = HF_TOKEN)
 
@@ -42,7 +50,7 @@ login(token = HF_TOKEN)
 royalListOfCode = {}
 issues_path = 'dataset'
 tokenizer = AutoTokenizer.from_pretrained("DeepESP/gpt2-spanish-medium")
-DATASET_SOURCE_ID = '6'
+DATASET_SOURCE_ID = '2'
 #Read current path
 path = Path(__file__).parent.absolute()
 
@@ -89,10 +97,14 @@ countCopySeveralDocument = 0
 counteOriginalDocument = 0
 data_top_columname = dataset_CODING.head()
 
+def verifyRepetelyChain(paragraph):
+    return '' if len([ x for x in BAD_CHAIN if paragraph.find(x) != -1]) > 0 else paragraph
+    
+
 for index, item in dataset_CODING.iterrows():      
 
-        if  not np.isnan(item['paragraphs']) and len(item['paragraphs']) > 1:
-           text = item['paragraphs']
+        if len(item['paragraphs']) > 1:
+           text = reduce(lambda a, b: verifyRepetelyChain(a) + "\n "+ verifyRepetelyChain(b), item['paragraphs'], "")
         else:
            text = getExtraTexInformation(item, data_top_columname)
         #Find topic or diagnosti clasification about the text
@@ -103,18 +115,27 @@ for index, item in dataset_CODING.iterrows():
           #print('Current text has ', currentSizeOfTokens)
           #print('Total of tokens is ', totalOfTokens)
 
-        listOfTokens = tokenizer.tokenize(text)
+        listOfTokens = []
+        try:
+          listOfTokens = tokenizer.tokenize(text)
+        except Exception:
+           raise Exception('Error')
+             
         currentSizeOfTokens = len(listOfTokens)
         totalOfTokens += currentSizeOfTokens
 
-        newCorpusRow['topic'] =  item['Healthtopics Name']  if item['Healthtopics Name'] else item['titles']
+        newCorpusRow['topic'] =  item['Healthtopics Name']  if item['Healthtopics Name'] else reduce(lambda a, b: a + "\n "+ b, item['titles'], "")
         newCorpusRow['raw_text'] = text
         idFile = counteOriginalDocument
-        newCorpusRow['document_id'] = idFile
+        newCorpusRow['document_id'] = str(idFile)
         corpusToLoad.append(newCorpusRow)
         
       
 df = pd.DataFrame.from_records(corpusToLoad)
+
+if os.path.exists(f"{str(path)}/{issues_path}/spanish_medical_llms.jsonl"):
+  os.remove(f"{str(path)}/{issues_path}/spanish_medical_llms.jsonl")
+
 df.to_json(f"{str(path)}/{issues_path}/spanish_medical_llms.jsonl", orient="records", lines=True)
 print(
         f"Downloaded all the issues for {DATASET_TO_LOAD}! Dataset stored at {issues_path}/spanish_medical_llms.jsonl"
@@ -130,9 +151,20 @@ print ('File size on Megabytes  (MB)', size >> 20 ) # 5120 megabytes (MB)
 print ('File size on Gigabytes (GB)', size >> 30 ) # 5 gigabytes (GB)
 
 #Once the issues are downloaded we can load them locally using our 
-spanish_dataset = load_dataset("json", data_files=f"{str(path)}/{issues_path}/spanish_medical_llms.jsonl", split="train")
+local_spanish_dataset = load_dataset("json", data_files=f"{str(path)}/{issues_path}/spanish_medical_llms.jsonl", split="train")
 
-print(spanish_dataset)
+##Update local dataset with cloud dataset
+try:  
+  spanish_dataset = load_dataset(DATASET_TO_UPDATE, split="train")
+  new_spanish_dataset = concatenate_datasets([spanish_dataset, local_spanish_dataset])
+except Exception:
+  print ('<== Exception ==> ')
+  raise Exception
+  #new_spanish_dataset = local_spanish_dataset
+
+new_spanish_dataset.push_to_hub(DATASET_TO_UPDATE)
+
+print(new_spanish_dataset)
 
 # Augmenting the dataset
 

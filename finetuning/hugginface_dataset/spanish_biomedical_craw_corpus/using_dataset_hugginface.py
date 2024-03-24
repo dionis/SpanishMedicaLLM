@@ -93,9 +93,6 @@ with open( str(path) + os.sep + FILE_TO_PROCESS,encoding='utf8') as file:
     paragraph += text + ' '
 
     if text == '':
-        print('<--- Paragraph ---->')
-        print (paragraph)
-        print ('<---------------------------------->')
         counteOriginalDocument += 1  
         idFile = str(counteOriginalDocument)
         newCorpusRow = cantemistDstDict.copy()

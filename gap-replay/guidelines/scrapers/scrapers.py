@@ -887,7 +887,6 @@ SCRAPERS = {
 
 
 SCRAPERS = {
-    'aafp': AAFPScraper,
     'who': WHOScraper
 }
 

@@ -39,7 +39,7 @@ python scrapers/scrapers.py \
 echo "\n1. b) Running 4/16 Typescript-based scrapers..."
 TS_SCRAPERS=("mayo" "nice" "rch" "wikidoc")
 
-!npm install typescript --save-dev
+npm install typescript --save-dev
 
 # Loop through each scraper directory
 for TS_SCRAPER_DIR in "${TS_SCRAPERS[@]}"; do
@@ -47,10 +47,10 @@ for TS_SCRAPER_DIR in "${TS_SCRAPERS[@]}"; do
     cd "scrapers/$TS_SCRAPER_DIR"
 
     # Install dependencies
-    if !npm install --silent; then
+    if npm install --silent; then
 
         # Compile and run the scraper
-        if tsc && !node js/index.js; then
+        if tsc && node js/index.js; then
             echo "Scraper in $TS_SCRAPER_DIR completed successfully."
         else
             echo "Error: Failed to run scraper in $TS_SCRAPER_DIR. This might be due to website updates. Skipping..."

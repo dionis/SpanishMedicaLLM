@@ -924,8 +924,7 @@ SCRAPERS = {
 }
 
 
-SCRAPERS = {
-    'cdc': CDCScraper,
+SCRAPERS = {   
     'magic': MAGICScraper,
     'who': WHOScraper
 }

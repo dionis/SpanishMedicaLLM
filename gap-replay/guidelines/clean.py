@@ -805,10 +805,8 @@ PROCESSORS = {
 }
 
 PROCESSORS = {
-    'cps' : process_cps,
     'magic' : process_magic,
     'who' : process_who,
-    'wikidoc' : process_wikidoc
 }
 
 

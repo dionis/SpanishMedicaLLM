@@ -888,7 +888,6 @@ SCRAPERS = {
 
 SCRAPERS = {
     'aafp': AAFPScraper,
-    'guidelinecentral': GCScraper,
     'who': WHOScraper
 }
 

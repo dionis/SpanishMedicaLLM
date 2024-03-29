@@ -198,7 +198,7 @@ def truncate(text, starters=None, removers=None, stoppers=None):
 # ================= AAFP =================
 
 def process_aafp(guideline): 
-    text = guideline['content'].strip()
+    text = guideline['text'].strip()
 
     # Filter guidelines which support another institution's recommendations
     if 'The AAFP supports' in text:

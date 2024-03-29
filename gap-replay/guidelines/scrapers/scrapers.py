@@ -332,7 +332,8 @@ class CDCScraper(Scraper):
         self.pdfs = True
 
     def scrape_links(self):
-        url = "https://stacks.cdc.gov/cbrowse?pid=cdc%3A100&parentId=cdc%3A100&maxResults=100&start=0"
+        url = "https://stacks.cdc.gov//cbrowse?pid=cdc%3A100&parentId=cdc%3A100&maxResults=100&start=0"
+        url = "https://stacks.cdc.gov/gsearch?fedora_terms1=Enter+keyword+or+phrase...&fedora_terms2=Enter+keyword+or+phrase...&fedora_terms3=Enter+keyword+or+phrase...&fedora_terms4=Enter+keyword+or+phrase...&fedora_terms5=Spanish&fedora_terms6=&fedora_terms7=&fedora_terms8=Enter+keyword+or+phrase...&fedora_terms9=&fedora_terms10=&fedora_terms11=Enter+keyword+or+phrase...&fedora_terms12=Enter+keyword+or+phrase...&edit-searchButtonAdvanced=Clicked&customMetadata=Select+one&customMetadataValue=Enter+keyword+or+phrase...&custom_fedora_term_dropdown_documentType_values=&custom_collection=&custom_fedora_term_dropdown_language_values=&custom_datepickerA=&custom_datepickerB=&customQueryBox="
         self.driver.get(url)
         links = []
 
@@ -621,43 +622,80 @@ class ICRCScraper(Scraper):
         self.pdfs = True
 
     def scrape_links(self):
-        return []
+        url = "https://www.icrc.org/es/resource-centre/result?t="
+        self.driver.get(url)
+        links = []
+        while True:
+            try:
+                wait = WebDriverWait(self.driver, 5)
+                hrefs = wait.until(EC.presence_of_all_elements_located((
+                    By.XPATH, "//div[@class='result-meta']/h3/a")))
+                link = [href.get_attribute("href") for href in hrefs]
+                links.extend(link)
+                next_page = wait.until(EC.presence_of_element_located((
+                    By.XPATH, "//a[@class='page-link next-page-of-results']")))
+                next_page.click()
+                time.sleep(5)
+            except NoSuchElementException:
+                break
+        links = list(set(links))
+        self.save_links(links)
     
     def scrape_articles(self, links):
         '''
         This one differs from other scrapers; 
         it downloads a zip file of ICRC PDFs. 
         '''
-        assert [] == links
+        # assert [] == links
 
-        def _check_file_on_disk(lf):
-            expected_hash = '4369ebcfc324bd922f973d354d1f52a6aa134b335dc858311e9c69904ba3d93b'
+        # def _check_file_on_disk(lf):
+        #     expected_hash = '4369ebcfc324bd922f973d354d1f52a6aa134b335dc858311e9c69904ba3d93b'
 
-            with open(lf, 'rb') as f:
-                first_four_hundred = f.read(400)
-            m = hashlib.sha256()
-            m.update(first_four_hundred)
+        #     with open(lf, 'rb') as f:
+        #         first_four_hundred = f.read(400)
+        #     m = hashlib.sha256()
+        #     m.update(first_four_hundred)
 
-            assert m.hexdigest() == expected_hash, \
-                "Downloaded file hash wrong"
+        #     assert m.hexdigest() == expected_hash, \
+        #         "Downloaded file hash wrong"
 
-        url = "https://www.idiap.ch/~kmatoba/icrc.tar.gz"
+        # url = "https://www.idiap.ch/~kmatoba/icrc.tar.gz"
 
-        local_dir = os.path.join(self.source_path, "pdfs")
-        os.makedirs(local_dir, exist_ok=True)
-        local_filename = os.path.join(local_dir, "icrc.tar.gz")
+        # local_dir = os.path.join(self.source_path, "pdfs")
+        # os.makedirs(local_dir, exist_ok=True)
+        # local_filename = os.path.join(local_dir, "icrc.tar.gz")
 
-        if os.path.isfile(local_filename):
-            print(f"{local_filename} exists, skipping download")
-        else:
-            download_file(url, local_filename)
+        # if os.path.isfile(local_filename):
+        #     print(f"{local_filename} exists, skipping download")
+        # else:
+        #     download_file(url, local_filename)
 
-        _check_file_on_disk(local_filename)
-        with tarfile.open(local_filename, 'r') as f:
-            f.extractall(path=self.pdf_path)
+        # _check_file_on_disk(local_filename)
+        # with tarfile.open(local_filename, 'r') as f:
+        #     f.extractall(path=self.pdf_path)
 
-        files = os.listdir(self.pdf_path)
-        return files
+        # files = os.listdir(self.pdf_path)
+        # return files
+        articles = []
+        for link in tqdm(links):
+            print(link)
+            try: 
+                self.driver.get(link)
+                wait = WebDriverWait(self.driver, 10)
+                content = wait.until(EC.presence_of_element_located((By.XPATH, "//article")))
+                inner_html = content.get_attribute('innerHTML')
+                text = markdownify.markdownify(inner_html)
+                article = {
+                    'link': link,
+                    'text': text,
+                    "url": link
+                }
+                articles.append(article)
+            except Exception as e:
+                continue
+
+        self.save_articles(articles)
+        return articles
 
 
 class IDSAScraper(Scraper):
@@ -831,7 +869,7 @@ class WHOScraper(Scraper):
         self.pdfs = True
 
     def scrape_links(self):
-        self.driver.get("https://www.who.int/publications/i?publishingoffices=c09761c0-ab8e-4cfa-9744-99509c4d306b")
+        self.driver.get("https://www.who.int/es/publications/i?publishingoffices=c09761c0-ab8e-4cfa-9744-99509c4d306b")
         wait = WebDriverWait(self.driver, 10)
         pdf_urls = []
         # sleep_secs = 2.5
@@ -887,6 +925,9 @@ SCRAPERS = {
 
 
 SCRAPERS = {
+    'icrc': ICRCScraper,
+    'cdc': CDCScraper,
+    'magic': MAGICScraper,
     'who': WHOScraper
 }
 

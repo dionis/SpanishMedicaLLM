@@ -38,7 +38,7 @@ python scrapers/scrapers.py \
 
 echo "\n1. b) Running 4/16 Typescript-based scrapers..."
 TS_SCRAPERS=("mayo" "nice" "rch" "wikidoc")
-TS_SCRAPERS=("wikidoc")
+TS_SCRAPERS=("mayo")
 
 npm install typescript -g
 

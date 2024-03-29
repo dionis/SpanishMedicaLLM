@@ -17,7 +17,7 @@ const fs = require("fs");
 
 /* ==================== GLOBAL VARIABLES ==================== */
 
-const TOC_URL='https://www.mayoclinic.org/diseases-conditions/index';
+const TOC_URL='https://www.mayoclinic.org/es/diseases-conditions/index';
 const OUTPUT_PATH: string = 'mayo_guidelines.json'
 const VERBOSE = true;
 const HEADLESS = true;

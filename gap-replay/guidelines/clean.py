@@ -805,6 +805,9 @@ PROCESSORS = {
 }
 
 PROCESSORS = {
+    'cps' : process_cps,
+    'icrc' : process_icrc,
+    'magic' : process_magic,
     'who' : process_who,
     'wikidoc' : process_wikidoc
 }
@@ -1037,18 +1040,19 @@ if __name__ == "__main__":
     if args.process:
         if not os.path.exists(args.raw_dir): 
             raise ValueError(f'{args.raw_dir} does not exist')
-        print(f'Processing guidelines from {len(PROCESSORS.keys())} sources in {args.raw_dir}')
-        for i, source in enumerate(PROCESSORS.keys()):
-            in_path = f'{args.raw_dir}/{source}.jsonl'
-            out_path = f'{args.save_dir}/{source}.jsonl'
-            if not os.path.exists(in_path):
-                print(f'[{i} | {len(PROCESSORS.keys())}] {source} guidelines not found at {in_path}')
-                continue
-            if os.path.exists(out_path):
-                print(f'[{i} | {len(PROCESSORS.keys())}] {source} guidelines already processed, skipping')
-                continue
-            print(f'[{i} | {len(PROCESSORS.keys())}] Processing {source} guidelines')
-            process_guidelines(source, in_path, out_path)
+        else:
+            print(f'Processing guidelines from {len(PROCESSORS.keys())} sources in {args.raw_dir}')
+            for i, source in enumerate(PROCESSORS.keys()):
+                in_path = f'{args.raw_dir}/{source}.jsonl'
+                out_path = f'{args.save_dir}/{source}.jsonl'
+                if not os.path.exists(in_path):
+                    print(f'[{i} | {len(PROCESSORS.keys())}] {source} guidelines not found at {in_path}')
+                    continue
+                if os.path.exists(out_path):
+                    print(f'[{i} | {len(PROCESSORS.keys())}] {source} guidelines already processed, skipping')
+                    continue
+                print(f'[{i} | {len(PROCESSORS.keys())}] Processing {source} guidelines')
+                process_guidelines(source, in_path, out_path)
     else:
         guid_path = args.save_dir + 'guidelines.jsonl'
         combine_guidelines(args.save_dir, guid_path)

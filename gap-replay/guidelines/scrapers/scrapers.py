@@ -48,7 +48,7 @@ import time
 import json
 import hashlib
 import tarfile
-
+from pathlib import Path
 from tqdm import tqdm
 import markdownify
 import scipdf
@@ -92,6 +92,9 @@ def setup_chrome_driver(download_path):
     Set up Chrome driver instance with download path. 
     '''
     chrome_options = ChromeOptions()
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('--disable-dev-shm-usage')
     chrome_options.add_experimental_option("prefs", {
         "download.default_directory": download_path,
         "download.prompt_for_download": False,
@@ -137,7 +140,8 @@ def scrape_SPOR_links():
     '''
     Helper to scrape CCO, CPS and SPOR links from a SPOR PDF.
     '''
-    PDFFile = open("SPOR_links.pdf",'rb')
+    path = Path(__file__).parent.absolute()
+    PDFFile = open(f"{str(path)}/SPOR_links.pdf",'rb')
     PDF = PyPDF2.PdfReader(PDFFile)
     pages = len(PDF.pages)
     key = '/Annots'

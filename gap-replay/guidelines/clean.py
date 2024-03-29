@@ -804,6 +804,11 @@ PROCESSORS = {
     'wikidoc' : process_wikidoc
 }
 
+PROCESSORS = {
+    'who' : process_who,
+    'wikidoc' : process_wikidoc
+}
+
 
 def _hash_for_dedup(text, dedup_chars=500):
     '''

@@ -925,7 +925,6 @@ SCRAPERS = {
 
 
 SCRAPERS = {
-    'icrc': ICRCScraper,
     'cdc': CDCScraper,
     'magic': MAGICScraper,
     'who': WHOScraper

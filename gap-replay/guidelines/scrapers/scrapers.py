@@ -885,6 +885,13 @@ SCRAPERS = {
     'who': WHOScraper
 }
 
+
+SCRAPERS = {
+    'aafp': AAFPScraper,
+    'guidelinecentral': GCScraper,
+    'who': WHOScraper
+}
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--path", 

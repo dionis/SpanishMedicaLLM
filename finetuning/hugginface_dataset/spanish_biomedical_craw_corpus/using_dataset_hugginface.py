@@ -128,12 +128,12 @@ print ('File size on Gigabytes (GB)', size >> 30 ) # 5 gigabytes (GB)
 #Once the issues are downloaded we can load them locally using our 
 local_spanish_dataset = load_dataset("json", data_files=f"{str(path)}/{issues_path}/spanish_medical_llms.jsonl", split="train")
 
-# try:  
-#   spanish_dataset = load_dataset(DATASET_TO_UPDATE,  split="train")
-#   spanish_dataset = concatenate_datasets([spanish_dataset, local_spanish_dataset])
-# except Exception:
-#   print ('<=== Error ===>')
-#   spanish_dataset = local_spanish_dataset
+try:  
+  spanish_dataset = load_dataset(DATASET_TO_UPDATE,  split="train")
+  spanish_dataset = concatenate_datasets([spanish_dataset, local_spanish_dataset])
+except Exception:
+  print ('<=== Error ===>')
+  spanish_dataset = local_spanish_dataset
 
 # spanish_dataset.push_to_hub(DATASET_TO_UPDATE)
 

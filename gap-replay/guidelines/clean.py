@@ -817,7 +817,7 @@ def _hash_for_dedup(text, dedup_chars=500):
     return dedup_str
 
 
-def process_guidelines(source, in_path, out_path, english_only=True):
+def process_guidelines(source, in_path, out_path, spanish_only=True):
     '''
     Apply a processing function to all guidelines from a source. 
     
@@ -840,8 +840,8 @@ def process_guidelines(source, in_path, out_path, english_only=True):
             filtered += 1
             continue
 
-        if english_only: 
-            if detect_lang(new_guid['text']) != 'en':
+        if spanish_only: 
+            if detect_lang(new_guid['text']) != 'es':
                 non_english += 1
                 continue
 

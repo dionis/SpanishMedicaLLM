@@ -48,3 +48,13 @@ https://huggingface.co/mrm8488/mbart-large-finetuned-opus-en-es-translation
 - https://www.linkedin.com/posts/philipp-schmid-a6a2bb196_free-llm-improvements-model-merging-allows-activity-7176852931298631682-xDur?utm_source=share&utm_medium=member_desktop
 
 
+## Posible Evaluation Dataset 
+
+https://huggingface.co/datasets/lighteval/med_mcqa
+
+https://huggingface.co/datasets/bigbio/med_qa/viewer?row=0
+
+https://huggingface.co/datasets/openlifescienceai/medmcqa
+
+
+

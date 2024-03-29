@@ -9,8 +9,7 @@
     "strict": true,
 "esModuleInterop": true,
 "forceConsistentCasingInFileNames": true,
-    "outDir": "./js/",
-    "moduleResolution": "node",
+    "outDir": "./js/",   
     "allowJs": true
   },
   "files":[

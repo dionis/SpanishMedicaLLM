@@ -109,7 +109,8 @@ def setup_chrome_driver(download_path):
 
 @functools.lru_cache
 def start_grobid():
-    process = subprocess.Popen("./serve_grobid.sh")
+    path = Path(__file__).parent.absolute()
+    process = subprocess.Popen(f"{str(path)}/./serve_grobid.sh")
 
 
 def pdf2text(src_path, dest_path):

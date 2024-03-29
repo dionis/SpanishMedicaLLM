@@ -67,12 +67,12 @@ done
 
 # 2. Clean guidelines
 echo "2. Cleaning guidelines..."
-python guidelines/clean.py \
+python clean.py \
     --process \
     --raw_dir $PATH_TO_RAW \
     --save_dir $PATH_TO_CLEAN
     
 # 3. Combine guidelines into guidelines.jsonl, add IDs, split into train/val/test
 echo "3. Combining guidelines..."
-python guidelines/clean.py \
+python clean.py \
     --save_dir $PATH_TO_CLEAN \

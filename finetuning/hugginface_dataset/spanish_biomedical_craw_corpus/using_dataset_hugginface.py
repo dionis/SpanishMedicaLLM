@@ -79,31 +79,37 @@ corpusToLoad = []
 countCopySeveralDocument = 0
 counteOriginalDocument = 0
 
-FILE_TO_PROCESS = EXAMPLE_DATASET_TO_LOAD
+FILE_TO_PROCESS = DATASET_TO_LOAD
 
 if not os.path.exists(str(path) + os.sep + FILE_TO_PROCESS):
    FILE_TO_PROCESS = EXAMPLE_DATASET_TO_LOAD
 
 with open( str(path) + os.sep + FILE_TO_PROCESS,encoding='utf8') as file:
-  linesInFile = file.readlines()
+  #linesInFile = file.readlines()
   paragraph = ''
+  while True:
+        linesInFile = file.readlines(8192)
+        if not linesInFile:
+            break
+        for index, iLine in enumerate(linesInFile): 
+          text = linesInFile[index] if len(linesInFile[index]) > 1 else '' 
+          paragraph += text + ' '
 
-  for index, iLine in enumerate(linesInFile): 
-    text = linesInFile[index] if len(linesInFile[index]) > 1 else '' 
-    paragraph += text + ' '
+          if text == '':
+              counteOriginalDocument += 1  
+              idFile = str(counteOriginalDocument)
+              newCorpusRow = cantemistDstDict.copy()
+              listOfTokens = tokenizer.tokenize(paragraph)
+              currentSizeOfTokens = len(listOfTokens)
+              totalOfTokens += currentSizeOfTokens
 
-    if text == '':
-        counteOriginalDocument += 1  
-        idFile = str(counteOriginalDocument)
-        newCorpusRow = cantemistDstDict.copy()
-        listOfTokens = tokenizer.tokenize(paragraph)
-        currentSizeOfTokens = len(listOfTokens)
-        totalOfTokens += currentSizeOfTokens
+              newCorpusRow['raw_text'] = paragraph
+              newCorpusRow['document_id'] = idFile
+              corpusToLoad.append(newCorpusRow)
+              paragraph = ''
+          paragraph = ''
 
-        newCorpusRow['raw_text'] = paragraph
-        newCorpusRow['document_id'] = idFile
-        corpusToLoad.append(newCorpusRow)
-        paragraph = ''
+
         
 df = pd.DataFrame.from_records(corpusToLoad)
 
@@ -135,14 +141,10 @@ except Exception:
   print ('<=== Error ===>')
   spanish_dataset = local_spanish_dataset
 
-# spanish_dataset.push_to_hub(DATASET_TO_UPDATE)
+spanish_dataset.push_to_hub(DATASET_TO_UPDATE)
 
 print(local_spanish_dataset)
 
-# Augmenting the dataset
 
-#Importan if exist element on DATASET_TO_UPDATE we must to update element 
-# in list, and review if the are repeted elements
 
-#spanish_dataset.push_to_hub(DATASET_TO_UPDATE)
 

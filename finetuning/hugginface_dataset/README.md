@@ -22,3 +22,11 @@ ClInt (Clinical Interview) is a bilingual Spanish-Catalan spoken corpus that con
  
 A resource of anonymized electronic health records in Spanish and Catalan for training and testing NLP tools
 
+
+### Analysis CORPUS OJOOOOO
+
+The corpus [MedProcNER](https://temu.bsc.es/medprocner/), [DisTEMIST](https://temu.bsc.es/distemist/) and [Symptemist](https://zenodo.org/records/8223654) has the same clinical case sources, and frecuently only have mention to entities, Symptoms inner the clinical case text. For these reason only if necessary index some one of them.
+
+
+
+

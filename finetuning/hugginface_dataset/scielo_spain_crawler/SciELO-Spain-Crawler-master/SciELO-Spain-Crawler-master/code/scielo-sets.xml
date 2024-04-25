@@ -1,0 +1,944 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/
+          http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
+ <responseDate>2024-04-07T04:47:02Z</responseDate>
+ <request verb="ListSets">https://scielo.isciii.es/oai/scielo-oai.php</request>
+<ListSets>
+
+  <set>
+   <setSpec>1578-908X</setSpec><setName><![CDATA[
+    ]]><![CDATA[Acción Psicológica]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>0210-4806</setSpec><setName><![CDATA[
+    ]]><![CDATA[Actas Urológicas Españolas]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>0212-7199</setSpec><setName><![CDATA[
+    ]]><![CDATA[Anales de Medicina Interna]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>0212-9728</setSpec><setName><![CDATA[
+    ]]><![CDATA[Anales de Psicología]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>1137-6627</setSpec><setName><![CDATA[
+    ]]><![CDATA[Anales del Sistema Sanitario de Navarra]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>0003-3170</setSpec><setName><![CDATA[
+    ]]><![CDATA[Angiología]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>0365-6691</setSpec><setName><![CDATA[
+    ]]><![CDATA[Archivos de la Sociedad Española de Oftalmología]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>1578-2549</setSpec><setName><![CDATA[
+    ]]><![CDATA[Archivos de Prevención de Riesgos Laborales]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>0004-0592</setSpec><setName><![CDATA[
+    ]]><![CDATA[Archivos de Zootecnia]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>0004-0614</setSpec><setName><![CDATA[
+    ]]><![CDATA[Archivos Españoles de Urología (Ed. impresa)]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>2340-9894</setSpec><setName><![CDATA[
+    ]]><![CDATA[Ars Pharmaceutica (Internet)]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>0213-1285</setSpec><setName><![CDATA[
+    ]]><![CDATA[Avances en Odontoestomatología]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>1699-6585</setSpec><setName><![CDATA[
+    ]]><![CDATA[Avances en Periodoncia e Implantología Oral]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>0376-7892</setSpec><setName><![CDATA[
+    ]]><![CDATA[Cirugía Plástica Ibero-Latinoamericana]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>1130-5274</setSpec><setName><![CDATA[
+    ]]><![CDATA[Clínica y Salud]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>2339-7896</setSpec><setName><![CDATA[
+    ]]><![CDATA[Comunidad]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>1135-7606</setSpec><setName><![CDATA[
+    ]]><![CDATA[Cuadernos de Medicina Forense]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>1578-8423</setSpec><setName><![CDATA[
+    ]]><![CDATA[Cuadernos de Psicología del Deporte]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>0211-9536</setSpec><setName><![CDATA[
+    ]]><![CDATA[Dynamis]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>1575-1813</setSpec><setName><![CDATA[
+    ]]><![CDATA[Educación Médica]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>1988-348X</setSpec><setName><![CDATA[
+    ]]><![CDATA[Ene]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>1695-6141</setSpec><setName><![CDATA[
+    ]]><![CDATA[Enfermería Global]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>2254-2884</setSpec><setName><![CDATA[
+    ]]><![CDATA[Enfermería Nefrológica]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>1989-3809</setSpec><setName><![CDATA[
+    ]]><![CDATA[Escritos de Psicología (Internet)]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>1130-6343</setSpec><setName><![CDATA[
+    ]]><![CDATA[Farmacia Hospitalaria]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>2014-9832</setSpec><setName><![CDATA[
+    ]]><![CDATA[FEM: Revista de la Fundación Educación Médica]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>0213-9111</setSpec><setName><![CDATA[
+    ]]><![CDATA[Gaceta Sanitaria]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>1134-928X</setSpec><setName><![CDATA[
+    ]]><![CDATA[Gerokomos]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>2530-5115</setSpec><setName><![CDATA[
+    ]]><![CDATA[Hospital a Domicilio]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>2695-5075</setSpec><setName><![CDATA[
+    ]]><![CDATA[Iberoamerican Journal of Medicine]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>1132-1296</setSpec><setName><![CDATA[
+    ]]><![CDATA[Index de Enfermería]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>1139-6709</setSpec><setName><![CDATA[
+    ]]><![CDATA[International Microbiology]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>2529-850X</setSpec><setName><![CDATA[
+    ]]><![CDATA[Journal of Negative and No Positive Results]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>0210-5691</setSpec><setName><![CDATA[
+    ]]><![CDATA[Medicina Intensiva]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>1698-4447</setSpec><setName><![CDATA[
+    ]]><![CDATA[Medicina Oral, Patología Oral y Cirugía Bucal (Ed. impresa)]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>1698-6946</setSpec><setName><![CDATA[
+    ]]><![CDATA[Medicina Oral, Patología Oral y Cirugía Bucal (Internet)]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>0465-546X</setSpec><setName><![CDATA[
+    ]]><![CDATA[Medicina y Seguridad del Trabajo]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>1131-5768</setSpec><setName><![CDATA[
+    ]]><![CDATA[Medifam]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>0211-6995</setSpec><setName><![CDATA[
+    ]]><![CDATA[Nefrología (Madrid)]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>1130-1473</setSpec><setName><![CDATA[
+    ]]><![CDATA[Neurocirugía]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>0212-1611</setSpec><setName><![CDATA[
+    ]]><![CDATA[Nutrición Hospitalaria]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>0378-4835</setSpec><setName><![CDATA[
+    ]]><![CDATA[Oncología (Barcelona)]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>0214-7823</setSpec><setName><![CDATA[
+    ]]><![CDATA[Papeles del Psicólogo]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>1139-7632</setSpec><setName><![CDATA[
+    ]]><![CDATA[Pediatría Atención Primaria]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>2794-1140</setSpec><setName><![CDATA[
+    ]]><![CDATA[Pharmaceutical Care España]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>1885-642X</setSpec><setName><![CDATA[
+    ]]><![CDATA[Pharmacy Practice (Granada)]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>1886-144X</setSpec><setName><![CDATA[
+    ]]><![CDATA[Psicothema]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>1989-709X</setSpec><setName><![CDATA[
+    ]]><![CDATA[Psychology, Society &amp; Education]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>1132-0559</setSpec><setName><![CDATA[
+    ]]><![CDATA[Psychosocial Intervention]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>1138-123X</setSpec><setName><![CDATA[
+    ]]><![CDATA[RCOE]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>2604-7306</setSpec><setName><![CDATA[
+    ]]><![CDATA[REC: Interventional Cardiology]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>1888-7546</setSpec><setName><![CDATA[
+    ]]><![CDATA[Revista Andaluza de Medicina del Deporte]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>1699-695X</setSpec><setName><![CDATA[
+    ]]><![CDATA[Revista Clínica de Medicina de Familia]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>1886-5887</setSpec><setName><![CDATA[
+    ]]><![CDATA[Revista de Bioética y Derecho]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>0034-7973</setSpec><setName><![CDATA[
+    ]]><![CDATA[Revista de Diagnóstico Biológico]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>3020-1160</setSpec><setName><![CDATA[
+    ]]><![CDATA[Revista de la Asociación Española de Especialistas en Medicina del Trabajo]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>0211-5735</setSpec><setName><![CDATA[
+    ]]><![CDATA[Revista de la Asociación Española de Neuropsiquiatría]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>1699-714X</setSpec><setName><![CDATA[
+    ]]><![CDATA[Revista de la OFIL ]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>1139-1375</setSpec><setName><![CDATA[
+    ]]><![CDATA[Revista de la Sociedad Española de Enfermería Nefrológica]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>1134-8046</setSpec><setName><![CDATA[
+    ]]><![CDATA[Revista de la Sociedad Española del Dolor]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>1885-5210</setSpec><setName><![CDATA[
+    ]]><![CDATA[Revista de Medicina y Cine]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>1889-836X</setSpec><setName><![CDATA[
+    ]]><![CDATA[Revista de Osteoporosis y Metabolismo Mineral]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>1576-5962</setSpec><setName><![CDATA[
+    ]]><![CDATA[Revista de Psicología del Trabajo y de las Organizaciones]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>1130-0558</setSpec><setName><![CDATA[
+    ]]><![CDATA[Revista Española de Cirugía Oral y Maxilofacial]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>1130-0108</setSpec><setName><![CDATA[
+    ]]><![CDATA[Revista Española de Enfermedades Digestivas]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>2174-5145</setSpec><setName><![CDATA[
+    ]]><![CDATA[Revista Española de Nutrición Humana y Dietética]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>1135-5727</setSpec><setName><![CDATA[
+    ]]><![CDATA[Revista Española de Salud Pública]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>1575-0620</setSpec><setName><![CDATA[
+    ]]><![CDATA[Revista Española de Sanidad Penitenciaria]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>2444-7986</setSpec><setName><![CDATA[
+    ]]><![CDATA[Revista ORL]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>1887-8571</setSpec><setName><![CDATA[
+    ]]><![CDATA[Sanidad Militar]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>0210-1696</setSpec><setName><![CDATA[
+    ]]><![CDATA[Siglo Cero]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>1699-6011</setSpec><setName><![CDATA[
+    ]]><![CDATA[Temperamentvm]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>0213-6163</setSpec><setName><![CDATA[
+    ]]><![CDATA[The European Journal of Psychiatry]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>1579-699X</setSpec><setName><![CDATA[
+    ]]><![CDATA[The European journal of psychiatry (edición en español)]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+		
+
+	
+  </set>
+
+  <set>
+   <setSpec>1889-1861</setSpec><setName><![CDATA[
+    ]]><![CDATA[The European Journal of Psychology Applied to Legal Context]]><![CDATA[
+   ]]></setName>
+	
+		
+		
+		
+
+	
+  </set>
+
+ </ListSets>
+<!--transformed by PHP 06:04:02 07-04-2024--></OAI-PMH>

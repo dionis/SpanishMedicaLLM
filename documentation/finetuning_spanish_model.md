@@ -41,19 +41,8 @@
 - The Hackaton 2024 interview ["IA y Modelos del Lenguaje, retos y oportunidades con Elena González-Blanco @Microsoft | #Somos600M "](https://www.youtube.com/watch?v=JzpvHRrqtSU&t=1161s) since 44:50 to 45:41 minutes
 - Use a LLM for pretrainig model if we have enough data
 
-
- 
- 
- 
- 
-- Use a LLM for pretrainig model if we have enough data 
- 
- 
- 
  **Research Objetive**
  - Analyze all spanish LLM model in hugginface repository built with fundation model as Llama2 or another
- 
- 
  
  **Research Criteria:**
  

@@ -8,3 +8,5 @@ finetuning/hugginface_dataset/medprocner/MedProcNER
 finetuning/hugginface_dataset/medprocner/dataset
 finetuning/hugginface_dataset/symptemist/SympTemist
 finetuning/hugginface_dataset/symptemist/dataset
+finetuning/hugginface_dataset/medlexsp/dataset
+finetuning/hugginface_dataset/medlexsp/MedLexSp_v2

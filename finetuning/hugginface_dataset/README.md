@@ -28,5 +28,30 @@ A resource of anonymized electronic health records in Spanish and Catalan for tr
 The corpus [MedProcNER](https://temu.bsc.es/medprocner/), [DisTEMIST](https://temu.bsc.es/distemist/) and [Symptemist](https://zenodo.org/records/8223654) has the same clinical case sources, and frecuently only have mention to entities, Symptoms inner the clinical case text. For these reason only if necessary index some one of them.
 
 
+Last corpus to process
+   MedLexSep
+   EMEA
+      https://opus.nlpl.eu/ELRC-EMEA/es&en/v3/ELRC-EMEA
+      https://elrc-share.eu/repository/browse/bilingual-corpus-made-out-of-pdf-documents-from-the-european-medicines-agency-emea-httpswwwemaeuropaeu-february-2020-en-mt/388ebb0e862511ea913100155d02670638ea7d4577004c97a1862ed7066fbf5f/
+
+
+   mespen_Medline
+      https://zenodo.org/records/3562536#.YTt1fH2xXbR
+   BioAsq_es: https://temu.bsc.es/mesinesp/index.php/datasets/
+
+
+   https://huggingface.co/datasets/LenguajeNaturalAI/casos_clinicos_tratamiento?row=21
+
+   https://huggingface.co/datasets/LenguajeNaturalAI/casos_clinicos_diagnostico
+
+   https://huggingface.co/datasets/head_qa
+
+
+
+
+
+
+
+
 
 

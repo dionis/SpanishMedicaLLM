@@ -29,7 +29,7 @@ import numpy as np
 # Load model directly
 from transformers import AutoTokenizer
 
-HF_TOKEN = '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'
+HF_TOKEN = ''
 DATASET_TO_LOAD = 'spanish_health_output.json'
 DATASET_TO_UPDATE = 'somosnlp/spanish_medica_llm'
 BAD_CHAIN = [

@@ -28,7 +28,7 @@ import pandas as pd
 # Load model directly
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
-HF_TOKEN = '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'
+HF_TOKEN = ''
 DATASET_TO_LOAD = 'CoWeSe.txt'
 EXAMPLE_DATASET_TO_LOAD = 'example.txt'
 DATASET_TO_UPDATE = 'somosnlp/spanish_medica_llm'

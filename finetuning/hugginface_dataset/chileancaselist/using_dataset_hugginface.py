@@ -27,7 +27,7 @@ import pathlib
 # Load model directly
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
-HF_TOKEN = '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'
+HF_TOKEN = ''
 DATASET_TO_LOAD = 'bigbio/distemist'
 DATASET_TO_UPDATE = 'somosnlp/spanish_medica_llm'
 DATASET_SOURCE_ID = '10'

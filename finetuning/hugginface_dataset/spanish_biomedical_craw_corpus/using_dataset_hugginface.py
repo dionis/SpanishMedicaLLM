@@ -28,7 +28,7 @@ import pandas as pd
 # Load model directly
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
-HF_TOKEN = ''
+HF_TOKEN = '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'
 DATASET_TO_LOAD = 'CoWeSe.txt'
 EXAMPLE_DATASET_TO_LOAD = 'example.txt'
 DATASET_TO_UPDATE = 'somosnlp/spanish_medica_llm'
@@ -95,7 +95,7 @@ with open( str(path) + os.sep + FILE_TO_PROCESS,encoding='utf8') as file:
           text = linesInFile[index] if len(linesInFile[index]) > 1 else '' 
           paragraph += text + ' '
 
-          if text == '':
+          if paragraph != '':
               counteOriginalDocument += 1  
               idFile = str(counteOriginalDocument)
               newCorpusRow = cantemistDstDict.copy()
@@ -141,7 +141,7 @@ except Exception:
   print ('<=== Error ===>')
   spanish_dataset = local_spanish_dataset
 
-spanish_dataset.push_to_hub(DATASET_TO_UPDATE)
+#spanish_dataset.push_to_hub(DATASET_TO_UPDATE)
 
 print(local_spanish_dataset)
 

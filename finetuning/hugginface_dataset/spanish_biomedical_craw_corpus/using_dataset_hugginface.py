@@ -40,6 +40,8 @@ royalListOfCode = {}
 issues_path = 'dataset'
 tokenizer = AutoTokenizer.from_pretrained("DeepESP/gpt2-spanish-medium")
 DATASET_SOURCE_ID = '4'
+
+EXPETIMENT_DOCUMENT_SIZE = 100000
 #Read current path
 path = Path(__file__).parent.absolute()
 
@@ -107,7 +109,13 @@ with open( str(path) + os.sep + FILE_TO_PROCESS,encoding='utf8') as file:
               newCorpusRow['document_id'] = idFile
               corpusToLoad.append(newCorpusRow)
               paragraph = ''
+
+              if counteOriginalDocument%500 == 0:
+                 print (f"There are ${counteOriginalDocument} documents")
           paragraph = ''
+
+          if counteOriginalDocument > EXPETIMENT_DOCUMENT_SIZE:
+             break
 
 
         

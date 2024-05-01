@@ -97,7 +97,7 @@ with open( str(path) + os.sep + FILE_TO_PROCESS,encoding='utf8') as file:
           text = linesInFile[index] if len(linesInFile[index]) > 1 else '' 
           paragraph += text + ' '
 
-          if paragraph != '':
+          if text == '' and paragraph != '':
               counteOriginalDocument += 1  
               idFile = str(counteOriginalDocument)
               newCorpusRow = cantemistDstDict.copy()

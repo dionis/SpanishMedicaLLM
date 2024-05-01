@@ -41,7 +41,7 @@ issues_path = 'dataset'
 tokenizer = AutoTokenizer.from_pretrained("DeepESP/gpt2-spanish-medium")
 DATASET_SOURCE_ID = '4'
 
-EXPETIMENT_DOCUMENT_SIZE = 8
+EXPETIMENT_DOCUMENT_SIZE = 100
 #Read current path
 path = Path(__file__).parent.absolute()
 
@@ -89,7 +89,12 @@ if not os.path.exists(str(path) + os.sep + FILE_TO_PROCESS):
 with open( str(path) + os.sep + FILE_TO_PROCESS,encoding='utf8') as file:
   #linesInFile = file.readlines()
   paragraph = ''
+
+  if os.path.exists(f"{str(path)}{os.sep}tinyExample_{FILE_TO_PROCESS}"):
+     os.remove(f"{str(path)}{os.sep}tinyExample_{FILE_TO_PROCESS}")
+
   fileToWrite = open(f"{str(path)}{os.sep}tinyExample_{FILE_TO_PROCESS}", "w",encoding='utf8')
+  
   while True:
         linesInFile = file.readlines(8192)
         if not linesInFile:

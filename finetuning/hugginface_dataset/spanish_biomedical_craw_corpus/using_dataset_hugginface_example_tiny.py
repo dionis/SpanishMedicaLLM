@@ -41,7 +41,7 @@ issues_path = 'dataset'
 tokenizer = AutoTokenizer.from_pretrained("DeepESP/gpt2-spanish-medium")
 DATASET_SOURCE_ID = '4'
 
-EXPETIMENT_DOCUMENT_SIZE = 10000000
+EXPETIMENT_DOCUMENT_SIZE = 8
 #Read current path
 path = Path(__file__).parent.absolute()
 
@@ -89,74 +89,22 @@ if not os.path.exists(str(path) + os.sep + FILE_TO_PROCESS):
 with open( str(path) + os.sep + FILE_TO_PROCESS,encoding='utf8') as file:
   #linesInFile = file.readlines()
   paragraph = ''
+  fileToWrite = open(f"{str(path)}{os.sep}tinyExample_{FILE_TO_PROCESS}",encoding='utf8')
   while True:
         linesInFile = file.readlines(8192)
         if not linesInFile:
             break
         for index, iLine in enumerate(linesInFile): 
-          text = linesInFile[index] if len(linesInFile[index]) > 1 else '' 
-          paragraph += text + ' '
+          fileToWrite(linesInFile[index])
 
-          if text != '':
-              counteOriginalDocument += 1  
-              idFile = str(counteOriginalDocument)
-              newCorpusRow = cantemistDstDict.copy()
-              listOfTokens = tokenizer.tokenize(paragraph)
-              currentSizeOfTokens = len(listOfTokens)
-              totalOfTokens += currentSizeOfTokens
+        counteOriginalDocument += 1
 
-              newCorpusRow['raw_text'] = paragraph
-              newCorpusRow['document_id'] = idFile
-              corpusToLoad.append(newCorpusRow)
-              paragraph = ''
-
-              if counteOriginalDocument%50000 == 0:
-                 print (f"There are {counteOriginalDocument} documents")
-                 print (f"Example of documents are {counteOriginalDocument}: ")
-                 print(f"\t{corpusToLoad[counteOriginalDocument-1]['raw_text']}\n\n")                 
-          paragraph = ''
-
-          if counteOriginalDocument > EXPETIMENT_DOCUMENT_SIZE:
+        if counteOriginalDocument > EXPETIMENT_DOCUMENT_SIZE:
              break
 
-
+fileToWrite.close()
         
-df = pd.DataFrame.from_records(corpusToLoad)
 
-if not os.path.exists(f"{str(path)}/{issues_path}"):
-    os.makedirs(f"{str(path)}/{issues_path}")
-                  
-if os.path.exists(f"{str(path)}/{issues_path}/spanish_medical_llms.jsonl"):
-  os.remove(f"{str(path)}/{issues_path}/spanish_medical_llms.jsonl")
-
-
-df.to_json(f"{str(path)}/{issues_path}/spanish_medical_llms.jsonl", orient="records", lines=True)
-print(
-        f"Downloaded all the issues for {DATASET_TO_LOAD}! Dataset stored at {issues_path}/spanish_medical_llms.jsonl"
-)
-
-print(' On dataset there are as document ', counteOriginalDocument)
-print(' On dataset there are as copy document ', countCopySeveralDocument)
-print(' On dataset there are as size of Tokens ', totalOfTokens)
-file = Path(f"{str(path)}/{issues_path}/spanish_medical_llms.jsonl")  # or Path('./doc.txt')
-size = file.stat().st_size
-print ('File size on Kilobytes (kB)', size >> 10)  # 5242880 kilobytes (kB)
-print ('File size on Megabytes  (MB)', size >> 20 ) # 5120 megabytes (MB)
-print ('File size on Gigabytes (GB)', size >> 30 ) # 5 gigabytes (GB)
-
-#Once the issues are downloaded we can load them locally using our 
-local_spanish_dataset = load_dataset("json", data_files=f"{str(path)}/{issues_path}/spanish_medical_llms.jsonl", split="train")
-
-try:  
-  spanish_dataset = load_dataset(DATASET_TO_UPDATE,  split="train")
-  spanish_dataset = concatenate_datasets([spanish_dataset, local_spanish_dataset])
-except Exception:
-  print ('<=== Error ===>')
-  spanish_dataset = local_spanish_dataset
-
-#spanish_dataset.push_to_hub(DATASET_TO_UPDATE)
-
-print(local_spanish_dataset)
 
 
 

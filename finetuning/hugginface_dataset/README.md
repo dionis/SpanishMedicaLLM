@@ -47,6 +47,25 @@ Last corpus to process
    https://huggingface.co/datasets/head_qa
 
 
+   ##**OTHER CORPUS in Spanish IMPORTANT**
+
+   - [Spanish SciELO Crawled Biomedical Corpus](https://zenodo.org/records/5902835)
+
+
+   ##***For FUTURE Portuges Resources***
+
+   - [BioBERTpt - A Portuguese Neural Language Model for Clinical Named Entity Recognition](https://aclanthology.org/2020.clinicalnlp-1.7/)
+
+   - [BioBERTpt - Portuguese Clinical and Biomedical BERT](https://huggingface.co/pucpr/biobertpt-all)
+
+   - [BRATECA (Brazilian Tertiary Care Dataset): a Clinical Information Dataset for the Portuguese Language](https://physionet.org/content/brateca/1.1/)
+
+   - [QTLP Portuguese-Greek Corpus for the MEDICAL domain](https://live.european-language-grid.eu/catalogue/corpus/12033)
+
+   - [Learning Portuguese Clinical Word Embeddings: A Multi-Specialty and Multi- Institutional Corpus of Clinical Narratives Supporting a Downstream Biomedical Task](https://www.researchgate.net/publication/335364585_Learning_Portuguese_Clinical_Word_Embeddings_A_Multi-Specialty_and_Multi-_Institutional_Corpus_of_Clinical_Narratives_Supporting_a_Downstream_Biomedical_Task)
+
+
+
 
 
 

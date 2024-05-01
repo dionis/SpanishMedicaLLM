@@ -89,7 +89,7 @@ if not os.path.exists(str(path) + os.sep + FILE_TO_PROCESS):
 with open( str(path) + os.sep + FILE_TO_PROCESS,encoding='utf8') as file:
   #linesInFile = file.readlines()
   paragraph = ''
-  fileToWrite = open(f"{str(path)}{os.sep}tinyExample_{FILE_TO_PROCESS}",encoding='utf8')
+  fileToWrite = open(f"{str(path)}{os.sep}tinyExample_{FILE_TO_PROCESS}", "w",encoding='utf8')
   while True:
         linesInFile = file.readlines(8192)
         if not linesInFile:

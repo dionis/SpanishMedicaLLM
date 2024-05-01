@@ -95,7 +95,7 @@ with open( str(path) + os.sep + FILE_TO_PROCESS,encoding='utf8') as file:
         if not linesInFile:
             break
         for index, iLine in enumerate(linesInFile): 
-          fileToWrite(linesInFile[index])
+          fileToWrite.write(linesInFile[index])
 
         counteOriginalDocument += 1
 

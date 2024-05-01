@@ -110,7 +110,7 @@ with open( str(path) + os.sep + FILE_TO_PROCESS,encoding='utf8') as file:
               corpusToLoad.append(newCorpusRow)
               paragraph = ''
 
-              if counteOriginalDocument%5000 == 0:
+              if counteOriginalDocument%50000 == 0:
                  print (f"There are {counteOriginalDocument} documents")
                  print (f"Example of documents are {counteOriginalDocument}: ")
                  print(f"\t{corpusToLoad[counteOriginalDocument-1]['raw_text']}\n\n")                 

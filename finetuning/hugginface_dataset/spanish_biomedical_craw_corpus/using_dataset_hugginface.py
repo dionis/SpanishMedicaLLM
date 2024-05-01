@@ -112,8 +112,8 @@ with open( str(path) + os.sep + FILE_TO_PROCESS,encoding='utf8') as file:
 
               if counteOriginalDocument%5000 == 0:
                  print (f"There are {counteOriginalDocument} documents")
-                 print (f"Example of documents are {counteOriginalDocument} documents")
-                 corpusToLoad[counteOriginalDocument-1]['raw_text']
+                 print (f"Example of documents are {counteOriginalDocument}: ")
+                 print(f"\t{corpusToLoad[counteOriginalDocument-1]['raw_text']}\n\n")                 
           paragraph = ''
 
           if counteOriginalDocument > EXPETIMENT_DOCUMENT_SIZE:

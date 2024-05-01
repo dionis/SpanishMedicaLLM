@@ -121,6 +121,9 @@ with open( str(path) + os.sep + FILE_TO_PROCESS,encoding='utf8') as file:
         
 df = pd.DataFrame.from_records(corpusToLoad)
 
+if not os.path.exists(f"{str(path)}/{issues_path}"):
+    os.makedirs(f"{str(path)}/{issues_path}")
+                  
 if os.path.exists(f"{str(path)}/{issues_path}/spanish_medical_llms.jsonl"):
   os.remove(f"{str(path)}/{issues_path}/spanish_medical_llms.jsonl")
 
